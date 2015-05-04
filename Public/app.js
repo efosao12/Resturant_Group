@@ -1,26 +1,29 @@
-$( "#buttonView3" ).click(function() {
- console.log('clickity');
-  $( "#work" ).empty();
+$(document).ready(function() {
+  console.log("READY TO RUMBLE WITH DOM");
+
+$("#buttonView3").click(function() {
+  console.log('clickity');
+
+  $("#work").empty();
+  // debugger
+  $.ajax({
+      url: "/restaurants/",
+      type: "GET",
+      dataType: "json",
+    }).done(function(data) {
+      console.log(data)
+      for (var i = 0; i < data.length; i++) {
+            data[i].name;
+            console.log(data[0].name);
+            var names = data[i].name
+            
+            $("#work").append("<h3>" + names + "</h3>")
+          };
+
+      
+      }
+    )
+    }
+ );
 });
-
-// $.ajax({
-//   method: "GET",
-//   url: "/"
-// }).done(function(debts) {
-//   // .map is equivalent to the code below... it is a shortcut
-
-//   // var debtEls = debts.map(function(debt) {
-//   //   return Mustache.render(template, debt);
-//   // })
-
-//   var debtEls = [];
-
-//   debts.forEach(function(debt) {
-//     var html = Mustache.render(template, debt);
-//     debtEls.push(html);
-//   });
-
-//   //
-
-//   $('tbody').append(debtEls);
-// });
+;
